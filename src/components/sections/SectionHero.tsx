@@ -5,8 +5,9 @@ import { ChevronDown } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { WordRevealWords } from '@/components/ui/WordReveal';
 import { site } from '@/lib/content';
+import { publicAsset } from '@/lib/public-url';
 
-const PORTADA = '/images/portada.png';
+const PORTADA = publicAsset('/images/portada.png');
 
 /*
  * Tagline (elige una):
