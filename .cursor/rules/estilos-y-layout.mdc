@@ -1,0 +1,25 @@
+---
+description: Proteger estilos y layout; copy centralizado
+alwaysApply: true
+---
+
+# Página personal — no romper la UI
+
+## Por qué a veces “se ven destruidos los estilos”
+
+- **Error 500 o crash de React**: Next muestra la página de error (casi sin CSS del sitio). Suele venir de `layout.tsx` inválido (p. ej. `metadataBase` / URLs), no de un cambio en Tailwind.
+- **Puerto o URL equivocados**: otra app en el puerto, o en GitHub Pages sin `NEXT_PUBLIC_BASE_PATH` donde hace falta → assets o rutas mal y parece “roto”.
+- **Cambiar copy dentro de componentes con muchas `className`**: más riesgo de error de tipeo en JSX que rompe el build.
+
+## Reglas para el agente
+
+1. **Texto del sitio (bio, tagline del hero, etc.)**: editar **`src/lib/content.ts`** (`site`, `flightLog`, etc.). **No** reescribir párrafos largos dentro de `Section*.tsx` salvo que el usuario pida rediseño de esa sección.
+2. **No tocar sin pedido explícito del usuario**: `src/app/globals.css`, `src/app/layout.tsx` (estructura `html`/`body`, providers, orden de hijos, `className` de fuentes), `next.config.ts`, `postcss.config.mjs`, dependencias de Tailwind.
+3. **Si hay que tocar `layout.tsx` o config**: correr **`npm run build`** al final y asegurar que pasa.
+4. **Cambios mínimos**: una frase no requiere reformatear el archivo ni “limpiar” imports o estilos ajenos.
+
+## Desarrollo local (para el usuario y el agente)
+
+- **`npm run dev`**: npm ejecuta antes **`predev`** → `scripts/free-port.mjs` libera el **3005** y luego arranca Next. Así no queda otro proceso viejo en 3005 devolviendo **500** o una app distinta.
+- **Actualización sola al editar**: con el dev server en marcha, Next hace **Fast Refresh** (guardas el archivo y el navegador se actualiza). No hace falta otro mecanismo para cambios de UI o copy.
+- Si el 500 persiste con el mensaje “Ready” en terminal: revisar **`.env` / variables** (`NEXT_PUBLIC_SITE_URL` debe ser URL `https://...` válida o vacía).

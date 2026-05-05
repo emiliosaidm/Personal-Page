@@ -26,19 +26,39 @@ const jetbrains = JetBrains_Mono({
 
 const assetPrefix = (process.env.NEXT_PUBLIC_BASE_PATH ?? '').trim().replace(/\/$/, '');
 
-/** Sin URL válida, `new URL('')` rompe todo el layout con 500. */
-function resolveCanonicalOrigin(): string {
-	const raw = process.env.NEXT_PUBLIC_SITE_URL?.trim();
-	if (raw) return raw.replace(/\/$/, '');
-	if (assetPrefix) return `https://emiliosaidm.github.io${assetPrefix}`;
-	return 'http://localhost:3005';
+/** Solo acepta http(s); si `NEXT_PUBLIC_SITE_URL` está mal, evita 500 en metadata. */
+function tryParseAbsoluteUrl(raw: string): URL | null {
+	const s = raw.trim();
+	if (!s) return null;
+	const withProto = /^https?:\/\//i.test(s) ? s : `https://${s}`;
+	try {
+		const u = new URL(withProto);
+		if (u.protocol !== 'http:' && u.protocol !== 'https:') return null;
+		return u;
+	} catch {
+		return null;
+	}
 }
 
-const baseUrl = resolveCanonicalOrigin();
+function resolveSiteUrl(): URL {
+	const fromEnv = process.env.NEXT_PUBLIC_SITE_URL?.trim();
+	if (fromEnv) {
+		const parsed = tryParseAbsoluteUrl(fromEnv);
+		if (parsed) return parsed;
+	}
+	if (assetPrefix) {
+		const parsed = tryParseAbsoluteUrl(`https://emiliosaidm.github.io${assetPrefix}`);
+		if (parsed) return parsed;
+	}
+	return new URL('http://localhost:3005');
+}
+
+const siteUrl = resolveSiteUrl();
+const baseUrl = siteUrl.href.replace(/\/$/, '');
 
 let metadataBase: URL;
 try {
-	metadataBase = new URL(`${baseUrl}/`);
+	metadataBase = new URL(siteUrl.pathname.endsWith('/') ? siteUrl.href : `${baseUrl}/`);
 } catch {
 	metadataBase = new URL('http://localhost:3005/');
 }
@@ -50,7 +70,7 @@ export const metadata: Metadata = {
 		template: '%s — Emilio Said Maccise',
 	},
 	description:
-		'Estudiante de matemáticas aplicadas (ITAM), cofundador de Meefi, piloto privado. Ciudad de México.',
+		'Estudiante de matemáticas aplicadas y ciencia de datos (ITAM), cofundador de Meefi, piloto privado. Ciudad de México.',
 	openGraph: {
 		title: 'Emilio Said Maccise',
 		description: 'Matemáticas, código, Meefi — Ciudad de México.',

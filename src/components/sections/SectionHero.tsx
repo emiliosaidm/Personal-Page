@@ -9,14 +9,6 @@ import { publicAsset } from '@/lib/public-url';
 
 const PORTADA = publicAsset('/images/portada.png');
 
-/*
- * Tagline (elige una):
- * 1) Activa: anclas sin “cabina”.
- * 2) "Matemáticas, código, cabina." (la quitamos por pedido)
- * 3) "Me gusta entender las reglas y luego ver si las puedo respetar en la práctica."
- */
-const TAGLINE = 'ITAM, Meefi y vuelo cuando deja el tiempo.';
-
 export function SectionHero() {
 	return (
 		<section
@@ -33,17 +25,17 @@ export function SectionHero() {
 						<WordRevealWords text={site.name} />
 					</h1>
 					<p className="font-display mt-6 text-xl font-medium text-[var(--cockpit)] md:text-2xl">
-						{TAGLINE}
+						{site.tagline}
 					</p>
 					<p className="mt-6 max-w-xl text-base leading-relaxed text-[var(--muted)] md:text-lg">
-						Estudio matemáticas aplicadas en el ITAM y soy uno de los tres cofundadores de{' '}
+						{site.heroBeforeMeefi}
 						<a
 							href={site.meefiUrl}
 							className="font-medium text-[var(--instrument)] underline decoration-[var(--instrument)]/40 underline-offset-4"
 						>
 							Meefi
 						</a>
-						. Vuelo cuando el calendario deja.
+						{site.heroAfterMeefi}
 					</p>
 					<motion.div
 						className="mt-10 flex flex-wrap gap-3"

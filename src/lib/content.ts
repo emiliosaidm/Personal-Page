@@ -10,6 +10,80 @@ export const site = {
 	github: 'https://github.com/emiliosaidm',
 	meefiUrl: 'https://meefi.io',
 	coordinates: { lat: '19.4326° N', lng: '99.1332° W' },
+	/** Hero — editar solo aquí para no tocar JSX/estilos del componente. */
+	tagline: 'ITAM, Meefi y piloto privado.',
+	heroBeforeMeefi:
+		'Estudio matemáticas aplicadas y ciencia de datos en el ITAM y soy uno de los tres cofundadores de ',
+	heroAfterMeefi: '. Soy piloto privado.',
+} as const;
+
+/** Sección Meefi — historia + rutas bajo /public/images/meefi/ */
+export const meefiSection = {
+	tagline: 'Cuenta empresarial, pagos masivos y facturación para PYMEs.',
+	intro:
+		'Esa frase resume lo que hoy vendemos en producción. Abajo va el recorrido, con fotos del camino.',
+	story: [
+		{
+			id: 'whatsapp',
+			label: 'WhatsApp primero',
+			body: 'Meefi empezó como un sistema de facturación por WhatsApp: cobrar y facturar donde ya estaban los chats. En esa ola llegamos a más de veinte mil personas y a más de quinientos clientes.',
+			images: [
+				{
+					src: '/images/meefi/story-team-jackets.png',
+					alt: 'Alan, Gerardo y Emilio con chamarras Meefi al aire libre.',
+				},
+			],
+		},
+		{
+			id: 'platanus',
+			label: 'Platanus',
+			body: 'Todavía con el producto anclado en WhatsApp nos aceptaron en Platanus: aceleradora, comunidad y la presión buena de ordenar lo que venía. Ahí cruzamos con otros equipos y metimos criterio a lo técnico y a lo de negocio.',
+			images: [
+				{
+					src: '/images/meefi/story-platanus-team-web.jpg',
+					alt: 'Equipo Meefi frente al letrero de Platanus Ventures.',
+				},
+				{
+					src: '/images/meefi/story-platanus-bottle.png',
+					alt: 'Emilio con playera Meefi y termo con logo de Platanus.',
+				},
+			],
+		},
+		{
+			id: 'pivot',
+			label: 'Venta y giro',
+			body: 'Esa operación la vendimos. Con el aprendizaje (y el mismo trío) pivotamos a lo que hoy es Meefi: tesorería para pymes que siguen repartiéndose entre Excel, el banco y el celular—con producto web, reglas claras y GPT donde ahorra trabajo repetitivo.',
+			images: [
+				{
+					src: '/images/meefi/story-office.png',
+					alt: 'Oficina tipo coworking, equipo reunido al fondo.',
+				},
+			],
+		},
+		{
+			id: 'hoy',
+			label: 'Lo de ahora',
+			body: 'Hoy el stack vive en producción: facturas, cuentas por cobrar, conciliación y flujos de cobro. Las capturas son del producto real—no mockups de marketing.',
+			images: [
+				{
+					src: '/images/meefi/story-app-facturas-web.jpg',
+					alt: 'Vista de facturas en app.meefi.io.',
+				},
+				{
+					src: '/images/meefi/story-dashboard.png',
+					alt: 'Tablero de cuentas por cobrar en Meefi Pay.',
+				},
+				{
+					src: '/images/meefi/story-conciliacion.png',
+					alt: 'Herramienta de conciliación de movimientos.',
+				},
+				{
+					src: '/images/meefi/story-landing-pay.png',
+					alt: 'Landing de Meefi Pay en desarrollo local.',
+				},
+			],
+		},
+	],
 } as const;
 
 /** Bitácora — agregar entradas en src/lib/content.ts si hace falta. */
@@ -20,12 +94,12 @@ export const flightLog = [
 		place: 'Meefi',
 		dates: '2023 — hoy',
 		description:
-			'Somos tres: Alan Said Maccise, Jesús Reyna Núñez y yo. Construimos software para que pymes en México no pierdan el hilo con pagos, cobranza, facturación y nómina. Yo me quedo más del lado técnico.',
+			'Facturación por WhatsApp primero (20k+ personas, 500+ clientes); en esa etapa entramos a Platanus. Vendimos, pivotamos y hoy somos tesorería para pymes con Alan y Gerardo—yo más del lado técnico.',
 	},
 	{
 		id: 'itam',
 		role: 'Licenciatura en curso',
-		place: 'ITAM — Matemáticas aplicadas y ciencias de datos',
+		place: 'ITAM — Matemáticas aplicadas y ciencia de datos',
 		// PENDIENTE: Emilio confirma año de ingreso → usar p.ej. "2019 — hoy" en dates
 		dates: '—',
 		description:
@@ -37,7 +111,7 @@ export const flightLog = [
 		place: 'Licencia a los 17',
 		dates: '—',
 		description:
-			'Reglas, checklist, meterle cuando el panorama no es claro. No vuelo todos los fines; cuando se puede, mejor.',
+			'Reglas, checklist, meterle cuando el panorama no es claro. La licencia la saqué a los 17; lo demás es disciplina y no apurarse.',
 	},
 	{
 		id: 'tech',
@@ -63,11 +137,11 @@ export const projects = [
 		slug: 'meefi',
 		title: 'Meefi',
 		description:
-			'Lo de siempre en una pyme: quién pagó, quién debe, la nómina, la factura. Meefi lo mete a un solo flujo, con WhatsApp cuando tiene sentido.',
+			'De facturación por WhatsApp a cuenta empresarial, pagos masivos y facturación para pymes. Platanus en el medio; hoy producto en producción.',
 		tags: ['Rails', 'React', 'PostgreSQL', 'GPT', 'Fintech'],
 		href: 'https://meefi.io',
 		github: null as string | null,
-		image: '/images/projects/1.jpg',
+		image: '/images/meefi/story-dashboard.png',
 	},
 	{
 		slug: 'expensesapp',

@@ -1,5 +1,8 @@
-import { ImagePlaceholder } from '@/components/ui/ImagePlaceholder';
+import Image from 'next/image';
 import { site } from '@/lib/content';
+import { publicAsset } from '@/lib/public-url';
+
+const ABOUT_PILOT = publicAsset('/images/about-pilot.png');
 
 export function SectionAbout() {
 	return (
@@ -12,7 +15,7 @@ export function SectionAbout() {
 					Sobre mí
 				</p>
 				<h2 className="font-display mt-4 max-w-3xl text-4xl font-semibold tracking-tight text-[var(--ink)] md:text-5xl">
-					Cómo llegué, qué hago, por qué no es tan raro.
+					Un poco de historia y de lo que ocupa mi día.
 				</h2>
 				<div className="mt-14 grid gap-12 lg:grid-cols-[1.1fr_0.9fr]">
 					<div className="space-y-6 text-lg leading-relaxed text-[var(--muted)]">
@@ -24,33 +27,33 @@ export function SectionAbout() {
 							{/* PENDIENTE: Emilio confirma detalles (primer programa concreto, año, o avión de escuela si quieres nombrarlo). */}
 						</p>
 						<p>
-							Hoy el día se reparte entre clases en el ITAM y parches y decisiones técnicas en Meefi con
-							Alan y Jesús. Los fines, si hay clima y tiempo, intento volar; si no, natación o leer un
-							rato sin pretender terminar la lista de pendientes.
+							Hoy el día se reparte entre clases en el ITAM y{' '}
+							<a
+								href={site.meefiUrl}
+								className="font-medium text-[var(--instrument)] underline decoration-[var(--instrument)]/40 underline-offset-4"
+							>
+								Meefi
+							</a>{' '}
+							(la startup de finanzas operativas para pymes que armamos Alan, Gerardo y yo): parches,
+							decisiones técnicas y lo que toque en producto. Cuando afloja, natación o bajarle un
+							poco a la lista de pendientes sin obsesionarme con cerrarla del todo.
 						</p>
 						<p>
-							El hilo no es místico: me late entender cómo funcionan las reglas (mate, aviación,
-							una base de datos) y luego ver si las puedo aplicar sin hacerse bolas el mundo real.
-							Meefi es eso en contabilidad de pyme; la cabina es eso con viento de costado.
+							Aparte me gusta enredarme en problemas de matemáticas, leer y salir con mi novia.
 						</p>
 					</div>
-					<div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1 lg:gap-6">
-						<div className="translate-y-0 sm:translate-y-8 lg:translate-y-12">
-							{/* TODO: reemplazar con /public/images/about-1.jpg */}
-							<ImagePlaceholder
-								expectedPath="/images/about-1.jpg"
-								suggestion="Retrato tuyo — mismo tono editorial que hero."
-								aspectClass="aspect-square"
-							/>
-						</div>
-						<div className="-translate-y-0 sm:-translate-y-4 lg:translate-y-0">
-							{/* TODO: reemplazar con /public/images/about-2.jpg */}
-							<ImagePlaceholder
-								expectedPath="/images/about-2.jpg"
-								suggestion="Cabina, pista, o estudio — narrativa de movimiento."
-								aspectClass="aspect-[5/6]"
-							/>
-						</div>
+					<div className="mx-auto w-full max-w-md translate-y-0 sm:translate-y-8 lg:mx-0 lg:max-w-none lg:translate-y-12">
+						<figure className="relative overflow-hidden rounded-sm border border-[var(--line)] bg-[var(--elevated)]">
+							<div className="relative aspect-[4/5] w-full sm:aspect-square">
+								<Image
+									src={ABOUT_PILOT}
+									alt="Emilio frente a un avión de entrenamiento en la pista, con licencia en la mano y pulgar arriba."
+									fill
+									className="object-cover object-[50%_35%]"
+									sizes="(max-width: 1024px) 90vw, 36vw"
+								/>
+							</div>
+						</figure>
 					</div>
 				</div>
 				<p className="mt-14 font-mono text-xs text-[var(--muted)]">
