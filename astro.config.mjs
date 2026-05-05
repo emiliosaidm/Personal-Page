@@ -8,9 +8,35 @@ import react from '@astrojs/react';
 const site = 'https://emiliosaidm.github.io';
 const pagesBase = '/pagina-personal';
 
-/** In `astro dev`, use `/` so the site opens at http://localhost:4321/ without a subpath. */
-const cli = process.argv[2];
-const base = cli === 'dev' ? '/' : pagesBase;
+/** Subcommand works even when Node injects flags before `astro.js` (e.g. Cursor / loaders). */
+function astroCommand() {
+	const known = new Set([
+		'dev',
+		'build',
+		'preview',
+		'sync',
+		'check',
+		'add',
+		'docs',
+		'preferences',
+	]);
+	for (let i = process.argv.length - 1; i >= 0; i--) {
+		const a = process.argv[i];
+		if (a.startsWith('-')) continue;
+		if (known.has(a)) return a;
+	}
+	return null;
+}
+
+const cmd = astroCommand();
+const useRootBase =
+	cmd === 'dev' ||
+	cmd === 'check' ||
+	cmd === 'sync' ||
+	cmd === 'add' ||
+	cmd === 'docs' ||
+	cmd === 'preferences';
+const base = useRootBase ? '/' : pagesBase;
 
 // https://astro.build/config
 export default defineConfig({

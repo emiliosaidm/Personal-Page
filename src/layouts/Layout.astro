@@ -1,6 +1,5 @@
 ---
 import '../styles/global.css';
-import { ClientRouter } from 'astro:transitions';
 import SiteNav from '../components/SiteNav.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import { withBase } from '../utils/paths';
@@ -37,7 +36,6 @@ const iconHref = withBase('favicon.svg');
 			rel="stylesheet"
 		/>
 		<title>{title}</title>
-		<ClientRouter />
 	</head>
 	<body
 		class="font-display mesh-bg min-h-screen bg-[#050508] text-zinc-200 antialiased selection:bg-cyan-400/20 selection:text-cyan-50"
