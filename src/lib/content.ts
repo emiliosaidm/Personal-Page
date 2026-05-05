@@ -1,5 +1,56 @@
 /** Central content — edit here (no CMS). */
 
+/** Logos + años junto al dashboard Meefi (animación en `MeefiDashboardMagic`). */
+export const meefiDashboardBadges = [
+	{
+		id: 'itam',
+		label: 'ITAM',
+		years: '2023 — hoy',
+		logo: '/images/branding/logo-itam.png',
+		alt: 'ITAM',
+		frame: 'dark' as const,
+	},
+	{
+		id: 'meefi',
+		label: 'Meefi',
+		years: '2023 — hoy',
+		logo: '/images/branding/logo-meefi.png',
+		alt: 'Meefi',
+		frame: 'dark' as const,
+	},
+	{
+		id: 'lewagon',
+		label: 'Le Wagon',
+		years: '2020',
+		logo: '/images/branding/logo-lewagon.png',
+		alt: 'Le Wagon',
+		frame: 'light' as const,
+	},
+] as const;
+
+export type FlightLogMark =
+	| { kind: 'logo'; src: string; alt: string; frame?: 'dark' | 'light' }
+	| { kind: 'icon'; icon: 'license' };
+
+export type FlightLogEntry = {
+	readonly id: string;
+	readonly role: string;
+	readonly place: string;
+	readonly dates: string;
+	readonly description: string;
+	readonly mark: FlightLogMark;
+};
+
+/** Párrafos de la sección Sobre mí (enlaces se arman en el componente). */
+export const aboutSection = {
+	p1: 'A los 17 saqué la licencia de piloto privado. Antes de eso, lo que más me enganchó del código fue Python en la prepa: quería automatizar cosas aburridas de la escuela y se me fue de las manos. En mate, me tardé en entender que me gustaban de verdad; en el ITAM empecé a ver cómo se conectan con cosas medibles.',
+	p2BeforeLink:
+		'Hoy el día se reparte entre clases en el ITAM (desde 2023) y ',
+	p2AfterLink:
+		' (la startup de finanzas operativas para pymes que armamos Alan, Gerardo y yo): parches, decisiones técnicas y lo que toque en producto. Cuando afloja, natación o bajarle un poco a la lista de pendientes sin obsesionarme con cerrarla del todo.',
+	p3: 'Aparte me gusta enredarme en problemas de matemáticas, leer y salir con mi novia.',
+} as const;
+
 export const site = {
 	name: 'Emilio Said Maccise',
 	age: 22,
@@ -66,7 +117,7 @@ export const meefiSection = {
 			body: 'El producto ya vive en producción: inicio con balance y movimientos, facturas, cuentas por cobrar y conciliación. Abajo va el tablero real—lo que ven los clientes en app, no un mock de marketing.',
 			images: [
 				{
-					src: '/images/meefi/story-dashboard-magic.png',
+					src: '/images/meefi/story-dashboard-showcase.png',
 					alt: 'Dashboard de Meefi: bienvenida, balance, gráfica y movimientos.',
 				},
 			],
@@ -75,7 +126,7 @@ export const meefiSection = {
 } as const;
 
 /** Bitácora — agregar entradas en src/lib/content.ts si hace falta. */
-export const flightLog = [
+export const flightLog: readonly FlightLogEntry[] = [
 	{
 		id: 'meefi',
 		role: 'Cofundador y CTO',
@@ -83,32 +134,51 @@ export const flightLog = [
 		dates: '2023 — hoy',
 		description:
 			'Facturación por WhatsApp primero (20k+ personas, 500+ clientes); en esa etapa entramos a Platanus. Vendimos, pivotamos y hoy somos tesorería para pymes con Alan y Gerardo—yo más del lado técnico.',
+		mark: {
+			kind: 'logo',
+			src: '/images/branding/logo-meefi.png',
+			alt: 'Meefi',
+			frame: 'dark',
+		},
 	},
 	{
 		id: 'itam',
 		role: 'Licenciatura en curso',
 		place: 'ITAM — Matemáticas aplicadas y ciencia de datos',
-		// PENDIENTE: Emilio confirma año de ingreso → usar p.ej. "2019 — hoy" en dates
-		dates: '—',
+		dates: '2023 — hoy',
 		description:
 			'Voy por la carrera; todavía no soy “matemático hecho”, voy aprendiendo. Me interesa lo que se puede modelar y lo que no.',
+		mark: {
+			kind: 'logo',
+			src: '/images/branding/logo-itam.png',
+			alt: 'ITAM',
+			frame: 'dark',
+		},
 	},
 	{
 		id: 'pilot',
-		role: 'Piloto privado',
-		place: 'Licencia a los 17',
-		dates: '—',
+		role: 'Piloto privado (PPA)',
+		place: 'Licencia de piloto privado',
+		dates: '2021',
 		description:
-			'Reglas, checklist, meterle cuando el panorama no es claro. La licencia la saqué a los 17; lo demás es disciplina y no apurarse.',
+			'La saqué a los 17: reglas, checklist, meterle cuando el panorama no es claro. Lo demás es disciplina y no apurarse.',
+		mark: { kind: 'icon', icon: 'license' },
 	},
 	{
 		id: 'tech',
-		role: 'Técnico',
-		place: 'Ingeniería de software',
-		dates: '—',
-		description: 'Fue antes del ITAM: bases de código, sistemas, cómo se arma un proyecto de software.',
+		role: 'Bootcamp de programación',
+		place: 'Le Wagon',
+		dates: '2020',
+		description:
+			'Antes del ITAM: bootcamp de desarrollo web en Le Wagon—bases de código, sistemas y cómo se arma un proyecto de software de punta a punta.',
+		mark: {
+			kind: 'logo',
+			src: '/images/branding/logo-lewagon.png',
+			alt: 'Le Wagon',
+			frame: 'light',
+		},
 	},
-] as const;
+];
 
 /** Lista agrupada — sin años ni porcentajes. */
 export const skills = {
@@ -129,7 +199,7 @@ export const projects = [
 		tags: ['Rails', 'React', 'PostgreSQL', 'GPT', 'Fintech'],
 		href: 'https://meefi.io',
 		github: null as string | null,
-		image: '/images/meefi/story-dashboard.png',
+		image: '/images/meefi/story-dashboard-showcase.png',
 	},
 	{
 		slug: 'expensesapp',
