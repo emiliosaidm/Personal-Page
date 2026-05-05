@@ -9,7 +9,7 @@ npm install
 npm run dev
 ```
 
-Abre [http://localhost:3000](http://localhost:3000). El build por defecto **no** usa `basePath` (sirve para desarrollo).
+Abre **http://localhost:3005** (`npm run dev` usa ese puerto a propósito: el 3000 suele estar ocupado por otra app y verías error o otra cosa). El build por defecto **no** usa `basePath` (sirve para desarrollo).
 
 ```bash
 npm run lint
