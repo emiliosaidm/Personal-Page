@@ -24,14 +24,27 @@ const jetbrains = JetBrains_Mono({
 	display: 'swap',
 });
 
-const assetPrefix = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
+const assetPrefix = (process.env.NEXT_PUBLIC_BASE_PATH ?? '').trim().replace(/\/$/, '');
 
-const baseUrl =
-	process.env.NEXT_PUBLIC_SITE_URL ??
-	(assetPrefix ? `https://emiliosaidm.github.io${assetPrefix}` : 'http://localhost:3000');
+/** Sin URL válida, `new URL('')` rompe todo el layout con 500. */
+function resolveCanonicalOrigin(): string {
+	const raw = process.env.NEXT_PUBLIC_SITE_URL?.trim();
+	if (raw) return raw.replace(/\/$/, '');
+	if (assetPrefix) return `https://emiliosaidm.github.io${assetPrefix}`;
+	return 'http://localhost:3005';
+}
+
+const baseUrl = resolveCanonicalOrigin();
+
+let metadataBase: URL;
+try {
+	metadataBase = new URL(`${baseUrl}/`);
+} catch {
+	metadataBase = new URL('http://localhost:3005/');
+}
 
 export const metadata: Metadata = {
-	metadataBase: new URL(baseUrl),
+	metadataBase,
 	title: {
 		default: 'Emilio Said Maccise — matemáticas, código, Meefi',
 		template: '%s — Emilio Said Maccise',
@@ -52,7 +65,7 @@ export const metadata: Metadata = {
 		description: 'Matemáticas, código, Meefi — Ciudad de México.',
 	},
 	icons: {
-		icon: `${assetPrefix || ''}/favicon.svg`,
+		icon: assetPrefix ? `${assetPrefix}/favicon.svg` : '/favicon.svg',
 	},
 };
 
