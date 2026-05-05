@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from 'next';
 import { Fraunces, Inter, JetBrains_Mono } from 'next/font/google';
-import { CustomCursor } from '@/components/CustomCursor';
 import { HeadingIndicator } from '@/components/HeadingIndicator';
 import { SmoothScroll } from '@/components/providers/SmoothScroll';
 import { ThemeProvider } from '@/components/providers/ThemeProvider';
@@ -78,7 +77,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 						<SiteNav />
 						{children}
 						<HeadingIndicator />
-						<CustomCursor />
 					</SmoothScroll>
 				</ThemeProvider>
 			</body>

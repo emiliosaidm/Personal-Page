@@ -86,11 +86,3 @@ body {
 	outline-offset: 3px;
 }
 
-body[data-cursor='custom'] {
-	cursor: none;
-}
-
-body[data-cursor='custom'] input,
-body[data-cursor='custom'] textarea {
-	cursor: text;
-}
