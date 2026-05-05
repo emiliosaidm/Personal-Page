@@ -4,10 +4,10 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import react from '@astrojs/react';
 
-// GitHub Pages: `base` must match your repository name.
-// English slug (rename repo to `personal-site` or change both to match).
+// GitHub Pages: `base` MUST equal your GitHub repo name (the path after github.io).
+// This folder is `pagina-personal` — if you rename the repo, update this string.
 const site = 'https://emiliosaidm.github.io';
-const base = '/personal-site';
+const base = '/pagina-personal';
 
 // https://astro.build/config
 export default defineConfig({
