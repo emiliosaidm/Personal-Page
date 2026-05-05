@@ -1,10 +1,12 @@
 'use client';
 
+import Image from 'next/image';
 import { ChevronDown } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { ImagePlaceholder } from '@/components/ui/ImagePlaceholder';
 import { WordRevealWords } from '@/components/ui/WordReveal';
 import { site } from '@/lib/content';
+
+const PORTADA = '/images/portada.png';
 
 /*
  * Tagline (elige una; la activa es la más sobria):
@@ -65,14 +67,19 @@ export function SectionHero() {
 						</a>
 					</motion.div>
 				</div>
-				<div className="relative mx-auto w-full max-w-md lg:mx-0 lg:max-w-none">
-					{/* TODO: reemplazar con /public/images/hero.jpg — sugerencia: retrato editorial o cabina */}
-					<ImagePlaceholder
-						expectedPath="/images/hero.jpg"
-						suggestion="Retrato editorial o foto en cabina — luz lateral, fondo limpio."
-						aspectClass="aspect-[3/4] md:aspect-[4/5]"
-						className="lg:translate-y-4"
-					/>
+				<div className="relative mx-auto w-full max-w-md lg:mx-0 lg:max-w-none lg:translate-y-4">
+					<figure className="relative overflow-hidden rounded-sm border border-[var(--line)] bg-[var(--elevated)]">
+						<div className="relative aspect-[3/4] w-full md:aspect-[4/5]">
+							<Image
+								src={PORTADA}
+								alt="Emilio en el escritorio, con el monitor y código al fondo."
+								fill
+								className="object-cover object-[50%_22%]"
+								sizes="(max-width: 1024px) 100vw, 40vw"
+								priority
+							/>
+						</div>
+					</figure>
 				</div>
 			</div>
 			<a
