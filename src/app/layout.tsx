@@ -37,7 +37,7 @@ export const metadata: Metadata = {
 		template: '%s — Emilio Said Maccise',
 	},
 	description:
-		'Estudiante de matemáticas aplicadas (ITAM), cofundador de Meefi, piloto privado. Maestría en AI y datos en UT Austin, en curso.',
+		'Estudiante de matemáticas aplicadas (ITAM), cofundador de Meefi, piloto privado. Ciudad de México.',
 	openGraph: {
 		title: 'Emilio Said Maccise',
 		description: 'Matemáticas, código, Meefi — Ciudad de México.',

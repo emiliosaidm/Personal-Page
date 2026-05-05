@@ -32,15 +32,6 @@ export const flightLog = [
 			'Voy por la carrera; todavía no soy “matemático hecho”, voy aprendiendo. Me interesa lo que se puede modelar y lo que no.',
 	},
 	{
-		id: 'utaustin',
-		role: 'Maestría en curso',
-		place: 'UT Austin — AI y ciencia de datos',
-		// PENDIENTE: Emilio confirma año de inicio → usar p.ej. "2024 — hoy" en dates
-		dates: '—',
-		description:
-			'La estoy haciendo en paralelo con todo lo demás. A veces se encima, la verdad.',
-	},
-	{
 		id: 'pilot',
 		role: 'Piloto privado',
 		place: 'Licencia a los 17',

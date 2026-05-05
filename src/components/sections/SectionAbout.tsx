@@ -24,10 +24,9 @@ export function SectionAbout() {
 							{/* PENDIENTE: Emilio confirma detalles (primer programa concreto, año, o avión de escuela si quieres nombrarlo). */}
 						</p>
 						<p>
-							Hoy el día se reparte entre clases en el ITAM, parches y decisiones técnicas en Meefi
-							con Alan y Jesús, y la maestría en UT Austin cuando no explota la semana. Los fines,
-							si hay clima y tiempo, intento volar; si no, natación o leer un rato sin pretender
-							terminar la lista de pendientes.
+							Hoy el día se reparte entre clases en el ITAM y parches y decisiones técnicas en Meefi con
+							Alan y Jesús. Los fines, si hay clima y tiempo, intento volar; si no, natación o leer un
+							rato sin pretender terminar la lista de pendientes.
 						</p>
 						<p>
 							El hilo no es místico: me late entender cómo funcionan las reglas (mate, aviación,
@@ -55,8 +54,7 @@ export function SectionAbout() {
 					</div>
 				</div>
 				<p className="mt-14 font-mono text-xs text-[var(--muted)]">
-					<span aria-hidden>📍</span> {site.location} · piloto privado · Meefi · maestría UT Austin
-					(en curso)
+					<span aria-hidden>📍</span> {site.location} · piloto privado · Meefi
 				</p>
 			</div>
 		</section>

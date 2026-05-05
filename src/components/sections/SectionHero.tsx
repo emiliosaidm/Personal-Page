@@ -9,12 +9,12 @@ import { site } from '@/lib/content';
 const PORTADA = '/images/portada.png';
 
 /*
- * Tagline (elige una; la activa es la más sobria):
- * 1) Declarativo corto: "Matemáticas, código, cabina."
- * 2) Descriptivo de lo que haces: "Estudio, construyo en Meefi, vuelo cuando deja el calendario."
- * 3) Más oblicuo / personal: "Me gusta entender las reglas y luego ver si las puedo respetar en la práctica."
+ * Tagline (elige una):
+ * 1) Activa: anclas sin “cabina”.
+ * 2) "Matemáticas, código, cabina." (la quitamos por pedido)
+ * 3) "Me gusta entender las reglas y luego ver si las puedo respetar en la práctica."
  */
-const TAGLINE = 'Matemáticas, código, cabina.';
+const TAGLINE = 'ITAM, Meefi y vuelo cuando deja el tiempo.';
 
 export function SectionHero() {
 	return (
@@ -42,8 +42,7 @@ export function SectionHero() {
 						>
 							Meefi
 						</a>
-						. Vuelo cuando el calendario deja; la maestría en AI y datos en UT Austin la llevo en
-						paralelo, a veces con retraso honesto.
+						. Vuelo cuando el calendario deja.
 					</p>
 					<motion.div
 						className="mt-10 flex flex-wrap gap-3"
