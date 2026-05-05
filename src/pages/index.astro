@@ -1,0 +1,82 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import HeroSection from '../components/react/HeroSection';
+import ProjectsGrid from '../components/react/ProjectsGrid';
+import { profile, projects, education } from '../data/site';
+---
+
+<Layout
+	title={`${profile.name} — Portafolio`}
+	description={`${profile.tagline}. ${profile.bio.slice(0, 120)}…`}
+>
+	<Nav />
+	<HeroSection
+		client:load
+		name={profile.name}
+		tagline={profile.tagline}
+		location={profile.location}
+		avatar={profile.avatar}
+		github={profile.github}
+		linkedin={profile.linkedin}
+		meefi={profile.meefi}
+	/>
+
+	<section
+		id="sobre"
+		class="mx-auto max-w-5xl scroll-mt-24 border-t border-white/5 px-6 py-20 md:py-28"
+	>
+		<h2
+			class="font-display mb-6 text-sm font-semibold uppercase tracking-[0.18em] text-violet-300/90"
+		>
+			Sobre mí
+		</h2>
+		<div class="max-w-3xl space-y-6">
+			<p class="text-lg leading-relaxed text-zinc-300 md:text-xl">
+				{profile.bio}
+			</p>
+			<p class="leading-relaxed text-zinc-400">
+				Trabajo en <a
+					href={profile.meefi}
+					class="text-teal-400 underline decoration-teal-500/30 underline-offset-4 transition hover:text-teal-300"
+					target="_blank"
+					rel="noopener noreferrer">Meefi</a
+				>, donde el producto conecta operaciones con el ecosistema fiscal mexicano
+				(CFDI y requisitos del SAT) de forma robusta y escalable.
+			</p>
+			<p class="mt-6 border-l-2 border-violet-500/40 pl-5 text-zinc-400">
+				{education.lewagon}
+			</p>
+		</div>
+	</section>
+
+	<section
+		id="proyectos"
+		class="mx-auto max-w-5xl scroll-mt-24 border-t border-white/5 px-6 py-20 md:py-28"
+	>
+		<h2
+			class="font-display mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-teal-300/90"
+		>
+			Startups y side projects
+		</h2>
+		<p class="mb-12 max-w-2xl text-zinc-500">
+			Selección desde mi carpeta <span class="font-mono text-zinc-400"
+				>~/startups</span
+			> y productos activos.
+		</p>
+		<ProjectsGrid client:visible projects={projects} />
+	</section>
+
+	<footer
+		class="mx-auto max-w-5xl border-t border-white/5 px-6 py-12 text-center text-sm text-zinc-500"
+	>
+		<p>
+			Hecho con Astro, Tailwind y un poco de movimiento — desplegado en GitHub
+			Pages.
+		</p>
+		<p class="mt-2 font-mono text-xs text-zinc-600">
+			© {new Date().getFullYear()}
+			{profile.name}
+		</p>
+	</footer>
+</Layout>
