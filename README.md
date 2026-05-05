@@ -1,43 +1,71 @@
-# Astro Starter Kit: Minimal
+# Emilio Said Maccise — personal site
 
-```sh
-npm create astro@latest -- --template minimal
+Next.js 15 (App Router), TypeScript, Tailwind CSS v4, Framer Motion, Lenis, next-themes. Una sola página: hero, sobre mí, Meefi, bitácora, herramientas, trabajo, fuera de la pantalla, leyendo, contacto.
+
+## Correr en local
+
+```bash
+npm install
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Abre [http://localhost:3000](http://localhost:3000). El build por defecto **no** usa `basePath` (sirve para desarrollo).
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+```bash
+npm run lint
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+### Probar el build como en GitHub Pages
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+```bash
+NEXT_PUBLIC_BASE_PATH=/Personal-Page NEXT_PUBLIC_SITE_URL=https://emiliosaidm.github.io/Personal-Page npm run build
+```
 
-Any static assets, like images, can be placed in the `public/` directory.
+El sitio estático queda en la carpeta `out/`. Puedes servirla con cualquier servidor estático apuntando a `out` (por ejemplo `npx serve out` y entrar con la ruta `/Personal-Page/` si tu servidor lo respeta).
 
-## 🧞 Commands
+## GitHub Pages
 
-All commands are run from the root of the project, from a terminal:
+El repo está pensado para **GitHub Actions → GitHub Pages** con export estático (`output: 'export'`).
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+1. Crea el repo vacío **Personal-Page** en tu cuenta (si aún no existe): [github.com/new](https://github.com/new).
+2. En el repo: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
+3. Haz push de la rama `main` o `master`; el workflow `.github/workflows/deploy.yml` hace `npm ci`, `npm run build` con:
+   - `NEXT_PUBLIC_BASE_PATH=/Personal-Page`
+   - `NEXT_PUBLIC_SITE_URL=https://emiliosaidm.github.io/Personal-Page`
+4. Cuando termine el job **deploy**, el sitio queda en **https://emiliosaidm.github.io/Personal-Page/**
 
-## 👀 Want to learn more?
+Si renombraras el repo, cambia esas dos variables en el workflow y en cualquier prueba local.
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## Variables de entorno
+
+| Variable | Uso |
+|----------|-----|
+| `NEXT_PUBLIC_BASE_PATH` | Subruta del proyecto en GitHub Pages (ej. `/Personal-Page`). Vacío en local. |
+| `NEXT_PUBLIC_SITE_URL` | URL canónica para Open Graph, `sitemap.xml` y `robots.txt`. |
+
+## Fotos
+
+Archivos bajo `public/`:
+
+| Ruta | Sección |
+|------|---------|
+| `images/hero.jpg` | Hero |
+| `images/about-1.jpg`, `about-2.jpg` | Sobre mí |
+| `images/meefi.jpg` | Meefi |
+| `images/projects/1.jpg` … `6.jpg` | Tarjetas de proyectos |
+| `images/personal/1.jpg` … `4.jpg` | Galería |
+| `images/books/1.jpg` … `5.jpg` | Libros |
+
+Los bloques usan `ImagePlaceholder` hasta que existan los archivos.
+
+## Contenido
+
+Texto y datos en **`src/lib/content.ts`**. Los `id` de sección deben coincidir con `SiteNav`.
+
+## Contacto en Pages
+
+No hay backend en Pages: el formulario abre **mailto:** con el mensaje armado. Para envío sin cliente de correo, más adelante puedes usar Formspree o Resend en un host con Node (p. ej. Vercel).
+
+## Lighthouse
+
+Con imágenes reales optimizadas y build de producción, vuelve a medir en Chrome DevTools.

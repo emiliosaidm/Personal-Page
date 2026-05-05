@@ -1,0 +1,96 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+	--font-display: var(--font-fraunces), ui-serif, Georgia, serif;
+	--font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+	--font-mono: var(--font-jetbrains), ui-monospace, monospace;
+
+	--color-canvas: var(--canvas);
+	--color-ink: var(--ink);
+	--color-muted: var(--muted);
+	--color-cockpit: var(--cockpit);
+	--color-instrument: var(--instrument);
+	--color-line: var(--line);
+	--color-elevated: var(--elevated);
+}
+
+:root {
+	--canvas: #fafaf7;
+	--ink: #0a0a0b;
+	--muted: #5c5c56;
+	--cockpit: #1e3a5f;
+	--instrument: #d97706;
+	--line: #e7e5e0;
+	--elevated: #f0efea;
+}
+
+.dark {
+	--canvas: #0a0a0b;
+	--ink: #fafaf7;
+	--muted: #a8a29e;
+	--cockpit: #3d5a80;
+	--instrument: #f59e0b;
+	--line: #27272a;
+	--elevated: #121214;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+	}
+}
+
+body {
+	background: var(--canvas);
+	color: var(--ink);
+}
+
+/* Paper grain — subtle, not “template glass” */
+.grain::before {
+	content: '';
+	pointer-events: none;
+	position: fixed;
+	inset: 0;
+	z-index: 50;
+	opacity: 0.04;
+	background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Technical grid — engineering notebook */
+.grid-technical {
+	background-image:
+		linear-gradient(var(--line) 1px, transparent 1px),
+		linear-gradient(90deg, var(--line) 1px, transparent 1px);
+	background-size: 48px 48px;
+	mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, black 15%, transparent 75%);
+	opacity: 0.35;
+}
+
+/* Focus ring for a11y */
+:focus-visible {
+	outline: 2px solid var(--instrument);
+	outline-offset: 3px;
+}
+
+body[data-cursor='custom'] {
+	cursor: none;
+}
+
+body[data-cursor='custom'] input,
+body[data-cursor='custom'] textarea {
+	cursor: text;
+}
