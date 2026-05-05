@@ -1,0 +1,80 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { profile } from '../../data/profile';
+import { withBase } from '../../utils/paths';
+
+const title = `Contact — ${profile.name}`;
+const description = 'Reach Emilio Said Maccise via GitHub, LinkedIn, or Meefi.';
+---
+
+<Layout {title} {description}>
+	<div class="mx-auto max-w-6xl px-5 pb-24 pt-12 md:px-8 md:pt-16">
+		<p class="font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-zinc-500">
+			Contact
+		</p>
+		<h1
+			class="mt-3 max-w-3xl font-display text-4xl font-extrabold tracking-tight text-white md:text-5xl"
+		>
+			The fastest ways to reach me.
+		</h1>
+		<p class="mt-4 max-w-2xl text-lg text-zinc-400">
+			I’m most responsive on LinkedIn for professional conversations and on GitHub
+			for anything code-related. Meefi is the right entry point if you want to
+			talk about the product itself.
+		</p>
+
+		<ul class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+			<li>
+				<a
+					href={profile.links.linkedin}
+					target="_blank"
+					rel="noopener noreferrer"
+					class="flex h-full flex-col rounded-2xl border border-white/[0.08] bg-white/[0.03] p-6 transition hover:border-cyan-500/40"
+				>
+					<span class="font-mono text-xs text-zinc-500">Professional</span>
+					<span class="mt-2 font-display text-lg font-semibold text-white"
+						>LinkedIn</span
+					>
+					<span class="mt-3 text-sm text-zinc-400">Recruiting, intros, collabs.</span
+					>
+				</a>
+			</li>
+			<li>
+				<a
+					href={profile.links.github}
+					target="_blank"
+					rel="noopener noreferrer"
+					class="flex h-full flex-col rounded-2xl border border-white/[0.08] bg-white/[0.03] p-6 transition hover:border-fuchsia-500/40"
+				>
+					<span class="font-mono text-xs text-zinc-500">Code</span>
+					<span class="mt-2 font-display text-lg font-semibold text-white"
+						>GitHub</span
+					>
+					<span class="mt-3 text-sm text-zinc-400">Issues, PRs, technical chat.</span>
+				</a>
+			</li>
+			<li class="sm:col-span-2 lg:col-span-1">
+				<a
+					href={profile.links.meefi}
+					target="_blank"
+					rel="noopener noreferrer"
+					class="flex h-full flex-col rounded-2xl border border-white/[0.08] bg-gradient-to-br from-cyan-500/15 to-fuchsia-500/10 p-6 transition hover:border-white/20"
+				>
+					<span class="font-mono text-xs text-zinc-500">Product</span>
+					<span class="mt-2 font-display text-lg font-semibold text-white"
+						>Meefi</span
+					>
+					<span class="mt-3 text-sm text-zinc-400">
+						Operations / billing / compliance product surface.
+					</span>
+				</a>
+			</li>
+		</ul>
+
+		<a
+			href={withBase('')}
+			class="mt-12 inline-flex font-mono text-sm text-zinc-500 transition hover:text-white"
+			data-astro-prefetch>← Home</a
+		>
+	</div>
+</Layout>

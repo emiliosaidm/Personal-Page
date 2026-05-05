@@ -1,0 +1,91 @@
+---
+import { withBase } from '../utils/paths';
+
+const year = new Date().getFullYear();
+const nav = [
+	['Home', withBase('')],
+	['About', withBase('about/')],
+	['Work', withBase('work/')],
+	['Projects', withBase('projects/')],
+	['Open source', withBase('open-source/')],
+	['Contact', withBase('contact/')],
+];
+---
+
+<footer class="mt-24 border-t border-white/[0.06] bg-black/20">
+	<div
+		class="mx-auto flex max-w-6xl flex-col gap-10 px-5 py-14 md:flex-row md:items-start md:justify-between md:px-8"
+	>
+		<div class="max-w-sm space-y-3">
+			<p class="font-display text-lg font-semibold text-white">Emilio Said Maccise</p>
+			<p class="text-sm leading-relaxed text-zinc-500">
+				Personal site — applied math, data, and production software. Hosted on
+				GitHub Pages (Astro + Tailwind + React).
+			</p>
+		</div>
+		<div class="flex flex-wrap gap-10">
+			<div>
+				<p class="mb-3 font-mono text-[10px] font-semibold uppercase tracking-widest text-zinc-500">
+					Sitemap
+				</p>
+				<ul class="space-y-2 text-sm">
+					{
+						nav.map(([label, href]) => (
+							<li>
+								<a
+									href={href}
+									class="text-zinc-400 transition hover:text-white"
+									data-astro-prefetch
+								>
+									{label}
+								</a>
+							</li>
+						))
+					}
+				</ul>
+			</div>
+			<div>
+				<p class="mb-3 font-mono text-[10px] font-semibold uppercase tracking-widest text-zinc-500">
+					Profiles
+				</p>
+				<ul class="space-y-2 text-sm">
+					<li>
+						<a
+							href="https://github.com/emiliosaidm"
+							class="text-zinc-400 transition hover:text-white"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							GitHub
+						</a>
+					</li>
+					<li>
+						<a
+							href="https://www.linkedin.com/in/emiliosaidm"
+							class="text-zinc-400 transition hover:text-white"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							LinkedIn
+						</a>
+					</li>
+					<li>
+						<a
+							href="https://meefi.io"
+							class="text-zinc-400 transition hover:text-white"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							Meefi
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div
+		class="border-t border-white/[0.04] py-6 text-center font-mono text-xs text-zinc-600"
+	>
+		© {year} · Built with curiosity in Mexico City
+	</div>
+</footer>

@@ -5,6 +5,14 @@
 	--font-mono: "JetBrains Mono", ui-monospace, monospace;
 }
 
+.mesh-bg {
+	background-image:
+		linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+	background-size: 64px 64px;
+	mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 20%, transparent 75%);
+}
+
 html {
 	scroll-behavior: smooth;
 }

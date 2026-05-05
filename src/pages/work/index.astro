@@ -1,0 +1,47 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Timeline from '../../components/react/Timeline';
+import { workTimeline } from '../../data/timeline';
+import { profile } from '../../data/profile';
+import { withBase } from '../../utils/paths';
+
+const title = `Work — ${profile.name}`;
+const description =
+	'Timeline across Meefi, analytics services, ITAM coursework, and Le Wagon.';
+---
+
+<Layout {title} {description}>
+	<div class="mx-auto max-w-6xl px-5 pb-20 pt-12 md:px-8 md:pt-16">
+		<p class="font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-fuchsia-400/90">
+			Work
+		</p>
+		<h1
+			class="mt-3 max-w-3xl font-display text-4xl font-extrabold tracking-tight text-white md:text-5xl"
+		>
+			How the last few years actually line up.
+		</h1>
+		<p class="mt-4 max-w-2xl text-lg text-zinc-400">
+			This is not buzzwords — each block maps to code you can find on GitHub or
+			in the Meefi / analytics repositories under my <span class="font-mono text-zinc-300"
+				>~/startups</span
+			> directory.
+		</p>
+
+		<div class="mt-16">
+			<Timeline client:visible entries={workTimeline} />
+		</div>
+
+		<div class="mt-16 flex flex-wrap gap-4">
+			<a
+				href={withBase('projects/')}
+				class="rounded-full bg-gradient-to-r from-cyan-400 to-teal-400 px-5 py-2.5 text-sm font-semibold text-zinc-950 transition hover:brightness-110"
+				data-astro-prefetch>Project deep dives</a
+			>
+			<a
+				href={withBase('open-source/')}
+				class="rounded-full border border-white/15 px-5 py-2.5 text-sm font-medium text-zinc-200 transition hover:border-white/25"
+				data-astro-prefetch>GitHub highlights</a
+			>
+		</div>
+	</div>
+</Layout>
