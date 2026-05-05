@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { ArrowUpRight } from 'lucide-react';
 import { meefiSection, site } from '@/lib/content';
 import { publicAsset } from '@/lib/public-url';
+import { MeefiDashboardMagic } from '@/components/sections/MeefiDashboardMagic';
 
 const badges = [
 	'Cofundador y CTO',
@@ -108,22 +109,34 @@ export function SectionMeefi() {
 				</header>
 
 				<div className="mt-20 space-y-20 md:mt-28 md:space-y-28">
-					{meefiSection.story.map((block, i) => (
-						<article
-							key={block.id}
-							className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:items-center lg:gap-14"
-						>
-							<div className={i % 2 === 1 ? 'lg:order-2' : ''}>
-								<p className="font-mono text-[10px] font-semibold uppercase tracking-[0.28em] text-[var(--cockpit)]">
-									{block.label}
-								</p>
-								<p className="mt-4 text-lg leading-relaxed text-[var(--muted)]">{block.body}</p>
-							</div>
-							<div className={i % 2 === 1 ? 'lg:order-1' : ''}>
-								<StoryGallery images={block.images} />
-							</div>
-						</article>
-					))}
+					{meefiSection.story.map((block, i) =>
+						block.id === 'hoy' ? (
+							<article key={block.id} className="space-y-10 md:space-y-12">
+								<div className="max-w-2xl">
+									<p className="font-mono text-[10px] font-semibold uppercase tracking-[0.28em] text-[var(--cockpit)]">
+										{block.label}
+									</p>
+									<p className="mt-4 text-lg leading-relaxed text-[var(--muted)]">{block.body}</p>
+								</div>
+								<MeefiDashboardMagic />
+							</article>
+						) : (
+							<article
+								key={block.id}
+								className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:items-center lg:gap-14"
+							>
+								<div className={i % 2 === 1 ? 'lg:order-2' : ''}>
+									<p className="font-mono text-[10px] font-semibold uppercase tracking-[0.28em] text-[var(--cockpit)]">
+										{block.label}
+									</p>
+									<p className="mt-4 text-lg leading-relaxed text-[var(--muted)]">{block.body}</p>
+								</div>
+								<div className={i % 2 === 1 ? 'lg:order-1' : ''}>
+									<StoryGallery images={block.images} />
+								</div>
+							</article>
+						),
+					)}
 				</div>
 
 				<ul className="mt-20 flex flex-wrap gap-2 border-t border-[var(--line)] pt-14">

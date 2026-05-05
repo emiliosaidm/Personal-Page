@@ -63,23 +63,11 @@ export const meefiSection = {
 		{
 			id: 'hoy',
 			label: 'Lo de ahora',
-			body: 'Hoy el stack vive en producción: facturas, cuentas por cobrar, conciliación y flujos de cobro. Las capturas son del producto real—no mockups de marketing.',
+			body: 'El producto ya vive en producción: inicio con balance y movimientos, facturas, cuentas por cobrar y conciliación. Abajo va el tablero real—lo que ven los clientes en app, no un mock de marketing.',
 			images: [
 				{
-					src: '/images/meefi/story-app-facturas-web.jpg',
-					alt: 'Vista de facturas en app.meefi.io.',
-				},
-				{
-					src: '/images/meefi/story-dashboard.png',
-					alt: 'Tablero de cuentas por cobrar en Meefi Pay.',
-				},
-				{
-					src: '/images/meefi/story-conciliacion.png',
-					alt: 'Herramienta de conciliación de movimientos.',
-				},
-				{
-					src: '/images/meefi/story-landing-pay.png',
-					alt: 'Landing de Meefi Pay en desarrollo local.',
+					src: '/images/meefi/story-dashboard-magic.png',
+					alt: 'Dashboard de Meefi: bienvenida, balance, gráfica y movimientos.',
 				},
 			],
 		},
