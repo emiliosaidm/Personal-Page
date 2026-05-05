@@ -1,46 +1,5 @@
 /** Central content — edit here (no CMS). */
 
-/** Logos + años junto al dashboard Meefi (animación en `MeefiDashboardMagic`). */
-export const meefiDashboardBadges = [
-	{
-		id: 'itam',
-		label: 'ITAM',
-		years: '2023 — hoy',
-		logo: '/images/branding/logo-itam.png',
-		alt: 'ITAM',
-		frame: 'dark' as const,
-	},
-	{
-		id: 'meefi',
-		label: 'Meefi',
-		years: '2023 — hoy',
-		logo: '/images/branding/logo-meefi.png',
-		alt: 'Meefi',
-		frame: 'dark' as const,
-	},
-	{
-		id: 'lewagon',
-		label: 'Le Wagon',
-		years: '2020',
-		logo: '/images/branding/logo-lewagon.png',
-		alt: 'Le Wagon',
-		frame: 'light' as const,
-	},
-] as const;
-
-export type FlightLogMark =
-	| { kind: 'logo'; src: string; alt: string; frame?: 'dark' | 'light' }
-	| { kind: 'icon'; icon: 'license' };
-
-export type FlightLogEntry = {
-	readonly id: string;
-	readonly role: string;
-	readonly place: string;
-	readonly dates: string;
-	readonly description: string;
-	readonly mark: FlightLogMark;
-};
-
 /** Párrafos de la sección Sobre mí (enlaces se arman en el componente). */
 export const aboutSection = {
 	p1: 'A los 17 saqué la licencia de piloto privado. Antes de eso, lo que más me enganchó del código fue Python en la prepa: quería automatizar cosas aburridas de la escuela y se me fue de las manos. En mate, me tardé en entender que me gustaban de verdad; en el ITAM empecé a ver cómo se conectan con cosas medibles.',
@@ -126,7 +85,7 @@ export const meefiSection = {
 } as const;
 
 /** Bitácora — agregar entradas en src/lib/content.ts si hace falta. */
-export const flightLog: readonly FlightLogEntry[] = [
+export const flightLog = [
 	{
 		id: 'meefi',
 		role: 'Cofundador y CTO',
@@ -134,12 +93,6 @@ export const flightLog: readonly FlightLogEntry[] = [
 		dates: '2023 — hoy',
 		description:
 			'Facturación por WhatsApp primero (20k+ personas, 500+ clientes); en esa etapa entramos a Platanus. Vendimos, pivotamos y hoy somos tesorería para pymes con Alan y Gerardo—yo más del lado técnico.',
-		mark: {
-			kind: 'logo',
-			src: '/images/branding/logo-meefi.png',
-			alt: 'Meefi',
-			frame: 'dark',
-		},
 	},
 	{
 		id: 'itam',
@@ -148,37 +101,24 @@ export const flightLog: readonly FlightLogEntry[] = [
 		dates: '2023 — hoy',
 		description:
 			'Voy por la carrera; todavía no soy “matemático hecho”, voy aprendiendo. Me interesa lo que se puede modelar y lo que no.',
-		mark: {
-			kind: 'logo',
-			src: '/images/branding/logo-itam.png',
-			alt: 'ITAM',
-			frame: 'dark',
-		},
 	},
 	{
 		id: 'pilot',
-		role: 'Piloto privado (PPA)',
-		place: 'Licencia de piloto privado',
-		dates: '2021',
+		role: 'Piloto privado',
+		place: 'Licencia a los 17',
+		dates: '—',
 		description:
-			'La saqué a los 17: reglas, checklist, meterle cuando el panorama no es claro. Lo demás es disciplina y no apurarse.',
-		mark: { kind: 'icon', icon: 'license' },
+			'Reglas, checklist, meterle cuando el panorama no es claro. La licencia la saqué a los 17; lo demás es disciplina y no apurarse.',
 	},
 	{
 		id: 'tech',
-		role: 'Bootcamp de programación',
-		place: 'Le Wagon',
+		role: 'Técnico',
+		place: 'Le Wagon — bootcamp de programación',
 		dates: '2020',
 		description:
-			'Antes del ITAM: bootcamp de desarrollo web en Le Wagon—bases de código, sistemas y cómo se arma un proyecto de software de punta a punta.',
-		mark: {
-			kind: 'logo',
-			src: '/images/branding/logo-lewagon.png',
-			alt: 'Le Wagon',
-			frame: 'light',
-		},
+			'Fue antes del ITAM: bases de código, sistemas y cómo se arma un proyecto de software de punta a punta.',
 	},
-];
+] as const;
 
 /** Lista agrupada — sin años ni porcentajes. */
 export const skills = {
