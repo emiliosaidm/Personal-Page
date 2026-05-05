@@ -25,16 +25,32 @@ El sitio estático queda en la carpeta `out/`. Puedes servirla con cualquier ser
 
 ## GitHub Pages
 
-El repo está pensado para **GitHub Actions → GitHub Pages** con export estático (`output: 'export'`).
+El repo usa **GitHub Actions → GitHub Pages** con export estático (`output: 'export'`).
 
-1. Crea el repo vacío **Personal-Page** en tu cuenta (si aún no existe): [github.com/new](https://github.com/new).
-2. En el repo: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
-3. Haz push de la rama `main` o `master`; el workflow `.github/workflows/deploy.yml` hace `npm ci`, `npm run build` con:
+### Activar Pages (obligatorio antes del primer deploy)
+
+Si el job **deploy** falla con `HttpError: Not Found` / *Failed to create deployment*, casi siempre es porque Pages no está enlazado a Actions:
+
+1. Repo **Personal-Page** → **Settings** → **Pages** (menú izquierdo).
+2. En **Build and deployment** → **Source**, elige **GitHub Actions** (no “Deploy from a branch”). Guarda si aparece la opción.
+3. Vuelve a correr el workflow (**Actions** → workflow → **Re-run all jobs**) o haz un push vacío.
+
+Sin ese paso, la API de deployments devuelve **404** y `deploy-pages` falla aunque el artifact `out/` se haya subido bien.
+
+### Flujo normal
+
+1. Crea el repo **Personal-Page** si hace falta: [github.com/new](https://github.com/new).
+2. Activa la fuente **GitHub Actions** como arriba.
+3. Push a `main` o `master`: el workflow instala dependencias, corre `npm run build` con:
    - `NEXT_PUBLIC_BASE_PATH=/Personal-Page`
    - `NEXT_PUBLIC_SITE_URL=https://emiliosaidm.github.io/Personal-Page`
-4. Cuando termine el job **deploy**, el sitio queda en **https://emiliosaidm.github.io/Personal-Page/**
+4. Al terminar **deploy**, el sitio queda en **https://emiliosaidm.github.io/Personal-Page/**
 
-Si renombraras el repo, cambia esas dos variables en el workflow y en cualquier prueba local.
+Si renombraras el repo, cambia esas dos variables en `.github/workflows/deploy.yml` y en pruebas locales.
+
+### Repo privado
+
+En cuenta gratuita, **GitHub Pages en repos privados** tiene restricciones. Si el repo es privado y sigue fallando, prueba hacerlo **público** o revisa [documentación de Pages para repos privados](https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits).
 
 ## Variables de entorno
 

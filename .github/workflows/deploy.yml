@@ -19,10 +19,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      # Registra el sitio con Pages + Actions (plantilla oficial). No usamos
+      # static_site_generator: next para no pisar next.config.ts (basePath ya va por env).
+      - uses: actions/configure-pages@v5
+
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
           cache: npm
+
       - name: Install and build
         env:
           NEXT_PUBLIC_BASE_PATH: /Personal-Page
@@ -30,6 +36,7 @@ jobs:
         run: |
           npm ci
           npm run build
+
       - uses: actions/upload-pages-artifact@v3
         with:
           path: out
@@ -37,9 +44,12 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
