@@ -8,7 +8,7 @@ alwaysApply: true
 ## Por qué a veces “se ven destruidos los estilos”
 
 - **Error 500 o crash de React**: Next muestra la página de error (casi sin CSS del sitio). Suele venir de `layout.tsx` inválido (p. ej. `metadataBase` / URLs), no de un cambio en Tailwind.
-- **Puerto o URL equivocados**: otra app en el puerto, o en GitHub Pages sin `NEXT_PUBLIC_BASE_PATH` donde hace falta → assets o rutas mal y parece “roto”.
+- **Puerto o URL equivocados**: otra app en el puerto, o en GitHub Pages con `NEXT_PUBLIC_BASE_PATH` / `NEXT_PUBLIC_SITE_URL` que no coinciden con cómo está publicado el `out/` (raíz vs subruta) → assets o rutas mal y parece “roto”.
 - **Cambiar copy dentro de componentes con muchas `className`**: más riesgo de error de tipeo en JSX que rompe el build.
 
 ## Reglas para el agente

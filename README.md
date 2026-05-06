@@ -15,38 +15,34 @@ Abre **http://localhost:3005** (`npm run dev` usa ese puerto a propósito: el 30
 npm run lint
 ```
 
-### Probar el build como en GitHub Pages
+### Probar el build como en GitHub Pages (raíz)
 
 ```bash
-NEXT_PUBLIC_BASE_PATH=/Personal-Page NEXT_PUBLIC_SITE_URL=https://emiliosaidm.github.io/Personal-Page npm run build
+NEXT_PUBLIC_SITE_URL=https://emiliosaidm.github.io npm run build
 ```
 
-El sitio estático queda en la carpeta `out/`. Puedes servirla con cualquier servidor estático apuntando a `out` (por ejemplo `npx serve out` y entrar con la ruta `/Personal-Page/` si tu servidor lo respeta).
+El sitio estático queda en la carpeta `out/`. Puedes servirla con `npx serve out` y abrir la raíz (`/`).
 
-## GitHub Pages
+## GitHub Pages en `https://emiliosaidm.github.io/`
 
-El repo usa **GitHub Actions → GitHub Pages** con export estático (`output: 'export'`).
+GitHub solo sirve la **raíz** de `username.github.io` desde el repositorio con nombre exacto **`emiliosaidm.github.io`**. Un repo con otro nombre (por ejemplo `Personal-Page`) siempre queda en `https://emiliosaidm.github.io/NombreDelRepo/`.
+
+Para usar la URL sin subruta:
+
+1. Crea (o usa) el repo **`emiliosaidm.github.io`** en tu cuenta.
+2. Pon ahí este mismo código (remoto `origin` apuntando a ese repo) o fusiona lo que tengas en `Personal-Page`.
+3. En **Settings → Pages**, fuente **GitHub Actions** (no “Deploy from a branch”).
+4. El workflow ya hace `npm run build` con `NEXT_PUBLIC_SITE_URL=https://emiliosaidm.github.io` y **sin** `NEXT_PUBLIC_BASE_PATH` (rutas y assets en `/`).
+
+Push a `main` o `master`: el sitio queda en **https://emiliosaidm.github.io/**
 
 ### Activar Pages (obligatorio antes del primer deploy)
 
 Si el job **deploy** falla con `HttpError: Not Found` / *Failed to create deployment*, casi siempre es porque Pages no está enlazado a Actions:
 
-1. Repo **Personal-Page** → **Settings** → **Pages** (menú izquierdo).
-2. En **Build and deployment** → **Source**, elige **GitHub Actions** (no “Deploy from a branch”). Guarda si aparece la opción.
-3. Vuelve a correr el workflow (**Actions** → workflow → **Re-run all jobs**) o haz un push vacío.
-
-Sin ese paso, la API de deployments devuelve **404** y `deploy-pages` falla aunque el artifact `out/` se haya subido bien.
-
-### Flujo normal
-
-1. Crea el repo **Personal-Page** si hace falta: [github.com/new](https://github.com/new).
-2. Activa la fuente **GitHub Actions** como arriba.
-3. Push a `main` o `master`: el workflow instala dependencias, corre `npm run build` con:
-   - `NEXT_PUBLIC_BASE_PATH=/Personal-Page`
-   - `NEXT_PUBLIC_SITE_URL=https://emiliosaidm.github.io/Personal-Page`
-4. Al terminar **deploy**, el sitio queda en **https://emiliosaidm.github.io/Personal-Page/**
-
-Si renombraras el repo, cambia esas dos variables en `.github/workflows/deploy.yml` y en pruebas locales.
+1. Repo **`emiliosaidm.github.io`** → **Settings** → **Pages**.
+2. En **Build and deployment** → **Source**, elige **GitHub Actions**. Guarda si aparece la opción.
+3. Vuelve a correr el workflow (**Actions** → workflow → **Re-run all jobs**) o haz un push.
 
 ### Repo privado
 
@@ -56,8 +52,8 @@ En cuenta gratuita, **GitHub Pages en repos privados** tiene restricciones. Si e
 
 | Variable | Uso |
 |----------|-----|
-| `NEXT_PUBLIC_BASE_PATH` | Subruta del proyecto en GitHub Pages (ej. `/Personal-Page`). Vacío en local. |
-| `NEXT_PUBLIC_SITE_URL` | URL canónica para Open Graph, `sitemap.xml` y `robots.txt`. |
+| `NEXT_PUBLIC_BASE_PATH` | Opcional. Subruta solo si el sitio vive bajo un path (ej. `/repo`). **Vacío** para `emiliosaidm.github.io` en la raíz. |
+| `NEXT_PUBLIC_SITE_URL` | URL canónica (`https://emiliosaidm.github.io`) para Open Graph, `sitemap.xml` y `robots.txt`. |
 
 ## Fotos
 
