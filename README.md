@@ -2,6 +2,8 @@
 
 Next.js 15 (App Router), TypeScript, Tailwind CSS v4, Framer Motion, Lenis, next-themes. Una sola página: hero, sobre mí, Meefi, bitácora, herramientas, trabajo, fuera de la pantalla, leyendo, contacto.
 
+Repo: **https://github.com/emiliosaidm/Personal-Page** (usuario de GitHub: `emiliosaidm`).
+
 ## Correr en local
 
 ```bash
@@ -15,45 +17,48 @@ Abre **http://localhost:3005** (`npm run dev` usa ese puerto a propósito: el 30
 npm run lint
 ```
 
-### Probar el build como en GitHub Pages (raíz)
+### Probar el build como en GitHub Pages
 
 ```bash
-NEXT_PUBLIC_SITE_URL=https://emiliosaidm.github.io npm run build
+NEXT_PUBLIC_BASE_PATH=/Personal-Page NEXT_PUBLIC_SITE_URL=https://emiliosaidm.github.io/Personal-Page npm run build
 ```
 
-El sitio estático queda en la carpeta `out/`. Puedes servirla con `npx serve out` y abrir la raíz (`/`).
+El sitio estático queda en la carpeta `out/`. Para previsualizar con la misma base: `npx serve out` y abre **`http://localhost:3000/Personal-Page/`** (ajusta el puerto si `serve` usa otro).
 
-## GitHub Pages en `https://emiliosaidm.github.io/`
+## GitHub Pages
 
-GitHub solo sirve la **raíz** de `username.github.io` desde el repositorio con nombre exacto **`emiliosaidm.github.io`**. Un repo con otro nombre (por ejemplo `Personal-Page`) siempre queda en `https://emiliosaidm.github.io/NombreDelRepo/`.
+El sitio público queda en:
 
-Para usar la URL sin subruta:
+**https://emiliosaidm.github.io/Personal-Page/**
 
-1. Crea (o usa) el repo **`emiliosaidm.github.io`** en tu cuenta.
-2. Pon ahí este mismo código (remoto `origin` apuntando a ese repo) o fusiona lo que tengas en `Personal-Page`.
-3. En **Settings → Pages**, fuente **GitHub Actions** (no “Deploy from a branch”).
-4. El workflow ya hace `npm run build` con `NEXT_PUBLIC_SITE_URL=https://emiliosaidm.github.io` y **sin** `NEXT_PUBLIC_BASE_PATH` (rutas y assets en `/`).
-
-Push a `main` o `master`: el sitio queda en **https://emiliosaidm.github.io/**
+GitHub Actions + export estático (`output: 'export'` en `next.config.ts`).
 
 ### Activar Pages (obligatorio antes del primer deploy)
 
 Si el job **deploy** falla con `HttpError: Not Found` / *Failed to create deployment*, casi siempre es porque Pages no está enlazado a Actions:
 
-1. Repo **`emiliosaidm.github.io`** → **Settings** → **Pages**.
-2. En **Build and deployment** → **Source**, elige **GitHub Actions**. Guarda si aparece la opción.
+1. Repo **Personal-Page** → **Settings** → **Pages** (menú izquierdo).
+2. En **Build and deployment** → **Source**, elige **GitHub Actions** (no “Deploy from a branch”). Guarda si aparece la opción.
 3. Vuelve a correr el workflow (**Actions** → workflow → **Re-run all jobs**) o haz un push.
+
+### Flujo normal
+
+Push a `main` o `master`: el workflow corre `npm run build` con `NEXT_PUBLIC_BASE_PATH=/Personal-Page` y `NEXT_PUBLIC_SITE_URL=https://emiliosaidm.github.io/Personal-Page`.
+
+### Raíz `https://emiliosaidm.github.io/` (sin `/Personal-Page`)
+
+Eso solo aplica si publicas desde el repo con nombre exacto **`emiliosaidm.github.io`**, no desde **Personal-Page**.
 
 ### Repo privado
 
-En cuenta gratuita, **GitHub Pages en repos privados** tiene restricciones. Si el repo es privado y sigue fallando, prueba hacerlo **público** o revisa [documentación de Pages para repos privados](https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits).
+En cuenta gratuita, **GitHub Pages en repos privados** tiene restricciones. Si falla, prueba repo **público** o revisa [límites de Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits).
 
 ## Variables de entorno
 
 | Variable | Uso |
 |----------|-----|
-| `NEXT_PUBLIC_BASE_PATH` | Opcional. Subruta solo si el sitio vive bajo un path (ej. `/repo`). **Vacío** para `emiliosaidm.github.io` en la raíz. |
-| `NEXT_PUBLIC_SITE_URL` | URL canónica (`https://emiliosaidm.github.io`) para Open Graph, `sitemap.xml` y `robots.txt`. |
+| `NEXT_PUBLIC_BASE_PATH` | Subruta en GitHub Pages: **`/Personal-Page`**. Vacío en local. |
+| `NEXT_PUBLIC_SITE_URL` | URL canónica: **`https://emiliosaidm.github.io/Personal-Page`**. |
 
 ## Fotos
 
@@ -76,7 +81,7 @@ Texto y datos en **`src/lib/content.ts`**. Los `id` de sección deben coincidir 
 
 ## Contacto en Pages
 
-No hay backend en Pages: el formulario abre **mailto:** con el mensaje armado. Para envío sin cliente de correo, más adelante puedes usar Formspree o Resend en un host con Node (p. ej. Vercel).
+No hay backend en Pages: el formulario abre **mailto:** con el mensaje armado.
 
 ## Lighthouse
 

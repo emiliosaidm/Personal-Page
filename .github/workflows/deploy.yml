@@ -31,7 +31,8 @@ jobs:
 
       - name: Install and build
         env:
-          NEXT_PUBLIC_SITE_URL: https://emiliosaidm.github.io
+          NEXT_PUBLIC_BASE_PATH: /Personal-Page
+          NEXT_PUBLIC_SITE_URL: https://emiliosaidm.github.io/Personal-Page
         run: |
           npm ci
           npm run build
