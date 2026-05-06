@@ -45,6 +45,12 @@ Si el job **deploy** falla con `HttpError: Not Found` / *Failed to create deploy
 
 Push a `main` o `master`: el workflow corre `npm run build` con `NEXT_PUBLIC_BASE_PATH=/Personal-Page` y `NEXT_PUBLIC_SITE_URL=https://emiliosaidm.github.io/Personal-Page`.
 
+### Se ve “sin CSS” / sin estilos
+
+1. Entra con la URL del **proyecto** (con el nombre del repo): **https://emiliosaidm.github.io/Personal-Page/** (no la raíz `github.io` sola).
+2. En el navegador, **recarga forzada** (p. ej. vaciar caché) por si quedó un `index.html` viejo.
+3. En **DevTools → Network**, el CSS debe pedirse como `/Personal-Page/_next/static/css/...` (status 200). Si ves `/_next/...` sin `/Personal-Page`, el deploy se construyó **sin** las variables del workflow: revisa **Actions** → último job → paso **Install and build**.
+
 ### Raíz `https://emiliosaidm.github.io/` (sin `/Personal-Page`)
 
 Eso solo aplica si publicas desde el repo con nombre exacto **`emiliosaidm.github.io`**, no desde **Personal-Page**.

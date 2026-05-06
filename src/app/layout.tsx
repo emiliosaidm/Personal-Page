@@ -56,9 +56,10 @@ function resolveSiteUrl(): URL {
 const siteUrl = resolveSiteUrl();
 const baseUrl = siteUrl.href.replace(/\/$/, '');
 
+/** Base estable para metadata (OG, etc.); siempre con `/` final. */
 let metadataBase: URL;
 try {
-	metadataBase = new URL(siteUrl.pathname.endsWith('/') ? siteUrl.href : `${baseUrl}/`);
+	metadataBase = new URL(`${baseUrl}/`);
 } catch {
 	metadataBase = new URL('http://localhost:3005/');
 }
