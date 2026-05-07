@@ -11,7 +11,19 @@ npm install
 npm run dev
 ```
 
-Abre **http://localhost:3005** (`npm run dev` usa ese puerto a propósito: el 3000 suele estar ocupado por otra app y verías error o otra cosa). El build por defecto **no** usa `basePath` (sirve para desarrollo).
+Cuando salga **Ready** en la terminal, abre en el navegador **http://localhost:3005/** (Next no lanza el navegador solo). La primera compilación puede tardar un poco.
+
+`predev` libera el puerto **3005** si estaba ocupado.
+
+En **desarrollo**, `next.config` **ignora** `NEXT_PUBLIC_BASE_PATH` aunque lo tengas en un `.env` pensando en GitHub Pages. Así la raíz local siempre es la correcta. El **build de producción** (`npm run build` en CI o en terminal) sí aplica el prefijo cuando defines esa variable.
+
+Si necesitas probar en local **igual que en Pages** (con `/Personal-Page` en la URL):
+
+```bash
+NEXT_PUBLIC_FORCE_BASEPATH_IN_DEV=1 npm run dev
+```
+
+y entra a **http://localhost:3005/Personal-Page/**.
 
 ```bash
 npm run lint
