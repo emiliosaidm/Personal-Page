@@ -7,7 +7,7 @@ export const aboutSection = {
 		'Hoy el día se reparte entre clases en el ITAM (desde 2023) y ',
 	p2AfterLink:
 		' (la startup en la que trabajo): parches, decisiones técnicas y lo que toque en producto.',
-	p3: 'Mis hobbies son nadar, leer y salir con mi novia.',
+	p3: 'Mis hobbies son leer tomando café y el deporte; el que más me gusta es esquiar y nadar.',
 } as const;
 
 export const site = {
