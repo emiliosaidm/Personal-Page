@@ -114,7 +114,7 @@ export const flightLog = [
 		place: 'Licencia privada',
 		dates: 'Verano 2021',
 		description:
-			'Reglas, checklist, meterle cuando el panorama no es claro. La licencia salió ese verano; lo demás es disciplina y no apurarse.',
+			'Siempre me gustó volar, así que fui por la licencia. Es un hobby, pero de los que te cambian cómo ves las cosas.',
 	},
 	{
 		id: 'tech',
