@@ -2,7 +2,7 @@
 
 /** Párrafos de la sección Sobre mí (enlaces se arman en el componente). */
 export const aboutSection = {
-	p1: 'Lo que más me gusta hacer es programar, el código y las matemáticas. En la prepa me gustó mucho la programación y por eso decidí estudiar eso. Siempre me ha gustado mucho la ciencia y las matemáticas; en el ITAM vi mejor cómo se enlazan con cosas medibles. La licencia de piloto privado la saqué en el verano de 2021.',
+	p1: 'Lo que más me gusta es programar y las matemáticas. Desde la preparatoria descubrí un gran interés por estas áreas, y por eso decidí orientar mis estudios hacia ellas. Siempre me ha gustado la ciencia, pero en el ITAM entendí mejor cómo se conecta con aspectos medibles y aplicables. Además, obtuve mi licencia de piloto privado en el verano de 2021.',
 	p2BeforeLink:
 		'Hoy el día se reparte entre clases en el ITAM (desde 2023) y ',
 	p2AfterLink:
