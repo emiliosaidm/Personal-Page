@@ -15,7 +15,8 @@ const basePath =
 
 const nextConfig: NextConfig = {
 	reactStrictMode: true,
-	output: 'export',
+	// Export estático solo en `npm run build` (no en `next dev`), para evitar fallos al desarrollar.
+	...(process.env.NEXT_STATIC_EXPORT === '1' ? { output: 'export' as const } : {}),
 	// GitHub Pages (subruta /Repo): basePath y assetPrefix alineados evitan
 	// solicitudes a /_next/... en la raíz del dominio (CSS/JS 404 → “sin estilos”).
 	...(basePath ? { basePath, assetPrefix: basePath } : {}),

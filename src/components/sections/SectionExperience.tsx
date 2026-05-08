@@ -11,7 +11,7 @@ export function SectionExperience() {
 					Bitácora
 				</p>
 				<h2 className="font-display mt-4 max-w-2xl text-4xl font-semibold tracking-tight text-[var(--ink)] md:text-5xl">
-					Legs, sin discurso de pitch.
+					Lugares y fechas.
 				</h2>
 				<p className="mt-6 max-w-xl text-[var(--muted)]">
 					Fechas y lugares. Si quieres más entradas, se editan en{' '}

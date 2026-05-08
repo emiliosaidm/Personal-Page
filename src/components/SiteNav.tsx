@@ -10,8 +10,6 @@ const links = [
 	{ id: 'meefi', label: 'Meefi' },
 	{ id: 'experience', label: 'Bitácora' },
 	{ id: 'skills', label: 'Herramientas' },
-	{ id: 'projects', label: 'Trabajo' },
-	{ id: 'beyond', label: 'Fuera' },
 	{ id: 'reading', label: 'Leyendo' },
 	{ id: 'contact', label: 'Contacto' },
 ] as const;

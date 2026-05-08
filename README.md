@@ -11,9 +11,7 @@ npm install
 npm run dev
 ```
 
-Cuando salga **Ready** en la terminal, abre en el navegador **http://localhost:3005/** (Next no lanza el navegador solo). La primera compilación puede tardar un poco.
-
-`predev` libera el puerto **3005** si estaba ocupado.
+Cuando en la terminal aparezca **Ready**, abre **http://localhost:3005/** en el navegador. Si aún está compilando, espera unos segundos y recarga.
 
 En **desarrollo**, `next.config` **ignora** `NEXT_PUBLIC_BASE_PATH` aunque lo tengas en un `.env` pensando en GitHub Pages. Así la raíz local siempre es la correcta. El **build de producción** (`npm run build` en CI o en terminal) sí aplica el prefijo cuando defines esa variable.
 

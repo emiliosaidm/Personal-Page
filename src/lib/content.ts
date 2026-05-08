@@ -130,108 +130,23 @@ export const skills = {
 
 export type SkillGroup = keyof typeof skills;
 
-export const projects = [
-	{
-		slug: 'meefi',
-		title: 'Meefi',
-		description:
-			'De facturación por WhatsApp a cuenta empresarial, pagos masivos y facturación para pymes. Platanus en el medio; hoy producto en producción.',
-		tags: ['Rails', 'React', 'PostgreSQL', 'GPT', 'Fintech'],
-		href: 'https://meefi.io',
-		github: null as string | null,
-		image: '/images/meefi/story-dashboard-showcase.png',
-	},
-	{
-		slug: 'expensesapp',
-		title: 'expensesapp',
-		description:
-			'Un proyecto viejito en PHP para gastos. Lo dejé en GitHub como archivo; no es lo que haría hoy, pero ahí está.',
-		tags: ['PHP'],
-		href: null,
-		github: 'https://github.com/emiliosaidm/expensesapp',
-		image: '/images/projects/2.jpg',
-	},
-	{
-		slug: 'placeholder-3',
-		title: 'Proyecto — reemplazar',
-		description: '// REEMPLAZAR: nombre, descripción y links del proyecto.',
-		tags: ['Tag'],
-		href: null,
-		github: null,
-		image: '/images/projects/3.jpg',
-	},
-	{
-		slug: 'placeholder-4',
-		title: 'Proyecto — reemplazar',
-		description: '// REEMPLAZAR: nombre, descripción y links del proyecto.',
-		tags: ['Tag'],
-		href: null,
-		github: null,
-		image: '/images/projects/4.jpg',
-	},
-	{
-		slug: 'placeholder-5',
-		title: 'Proyecto — reemplazar',
-		description: '// REEMPLAZAR: nombre, descripción y links del proyecto.',
-		tags: ['Tag'],
-		href: null,
-		github: null,
-		image: '/images/projects/5.jpg',
-	},
-	{
-		slug: 'placeholder-6',
-		title: 'Proyecto — reemplazar',
-		description: '// REEMPLAZAR: nombre, descripción y links del proyecto.',
-		tags: ['Tag'],
-		href: null,
-		github: null,
-		image: '/images/projects/6.jpg',
-	},
-] as const;
-
 export const books = [
 	{
-		title: 'Título — reemplazar',
-		note: 'Pendiente: una frase post-it cuando tengas el libro.',
-		cover: '/images/books/1.jpg',
+		title: 'Sapiens',
+		subtitle: 'De animales a dioses · Yuval Noah Harari',
+		note: 'Breve historia de la humanidad; para ver el bosque, no solo los árboles.',
+		cover: '/images/books/sapiens.png',
 	},
 	{
-		title: 'Título — reemplazar',
-		note: 'Pendiente: confirmar.',
-		cover: '/images/books/2.jpg',
+		title: 'Cosmos',
+		subtitle: 'Carl Sagan',
+		note: 'Origen, vida y consciencia; el clásico que no envejece.',
+		cover: '/images/books/cosmos.png',
 	},
 	{
-		title: 'Título — reemplazar',
-		note: 'Pendiente: confirmar.',
-		cover: '/images/books/3.jpg',
-	},
-	{
-		title: 'Título — reemplazar',
-		note: 'Pendiente: confirmar.',
-		cover: '/images/books/4.jpg',
-	},
-	{
-		title: 'Título — reemplazar',
-		note: 'Pendiente: confirmar.',
-		cover: '/images/books/5.jpg',
-	},
-] as const;
-
-export const personalGallery = [
-	{
-		src: '/images/personal/1.jpg',
-		caption: 'Sobre [lugar] — editar',
-	},
-	{
-		src: '/images/personal/2.jpg',
-		caption: 'Lectura: [título corto]',
-	},
-	{
-		src: '/images/personal/3.jpg',
-		caption: 'Alberca, temprano',
-	},
-	{
-		src: '/images/personal/4.jpg',
-		caption: 'Notas en la mesa',
+		title: 'La poesía de los números',
+		subtitle: 'Daniel Tammet',
+		note: 'Cómo las matemáticas iluminan la vida; calma y curiosidad.',
+		cover: '/images/books/poesia-numeros.png',
 	},
 ] as const;
