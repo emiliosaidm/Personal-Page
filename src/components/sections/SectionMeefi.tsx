@@ -116,7 +116,9 @@ export function SectionMeefi() {
 									<p className="font-mono text-[10px] font-semibold uppercase tracking-[0.28em] text-[var(--cockpit)]">
 										{block.label}
 									</p>
-									<p className="mt-4 text-lg leading-relaxed text-[var(--muted)]">{block.body}</p>
+									{block.body ? (
+										<p className="mt-4 text-lg leading-relaxed text-[var(--muted)]">{block.body}</p>
+									) : null}
 								</div>
 								<MeefiDashboardMagic />
 							</article>
@@ -129,7 +131,9 @@ export function SectionMeefi() {
 									<p className="font-mono text-[10px] font-semibold uppercase tracking-[0.28em] text-[var(--cockpit)]">
 										{block.label}
 									</p>
-									<p className="mt-4 text-lg leading-relaxed text-[var(--muted)]">{block.body}</p>
+									{block.body ? (
+										<p className="mt-4 text-lg leading-relaxed text-[var(--muted)]">{block.body}</p>
+									) : null}
 								</div>
 								<div className={i % 2 === 1 ? 'lg:order-1' : ''}>
 									<StoryGallery images={block.images} />

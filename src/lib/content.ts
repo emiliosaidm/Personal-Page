@@ -2,12 +2,12 @@
 
 /** Párrafos de la sección Sobre mí (enlaces se arman en el componente). */
 export const aboutSection = {
-	p1: 'A los 17 saqué la licencia de piloto privado. Antes de eso, lo que más me enganchó del código fue Python en la prepa: quería automatizar cosas aburridas de la escuela y se me fue de las manos. En mate, me tardé en entender que me gustaban de verdad; en el ITAM empecé a ver cómo se conectan con cosas medibles.',
+	p1: 'Lo que más me gusta hacer es programar, el código y las matemáticas. En la prepa me acerqué con Python—quería automatizar cosas—y ahí se me prendió el tema de verdad. En mate me costó un poco admitir que me gustaban en serio; en el ITAM ya vi mejor cómo se enlazan con cosas medibles. La licencia de piloto privado la saqué en el verano de 2021; eso vino después en la línea del tiempo.',
 	p2BeforeLink:
 		'Hoy el día se reparte entre clases en el ITAM (desde 2023) y ',
 	p2AfterLink:
-		' (la startup de finanzas operativas para pymes que armamos Alan, Gerardo y yo): parches, decisiones técnicas y lo que toque en producto. Cuando afloja, natación o bajarle un poco a la lista de pendientes sin obsesionarme con cerrarla del todo.',
-	p3: 'Aparte me gusta enredarme en problemas de matemáticas, leer y salir con mi novia.',
+		' (la startup en la que trabajo): parches, decisiones técnicas y lo que toque en producto. Cuando afloja, natación o bajarle un poco a la lista de pendientes sin obsesionarme con cerrarla del todo.',
+	p3: 'Aparte leer y salir con mi novia.',
 } as const;
 
 export const site = {
@@ -20,16 +20,22 @@ export const site = {
 	github: 'https://github.com/emiliosaidm',
 	meefiUrl: 'https://meefi.io',
 	coordinates: { lat: '19.4326° N', lng: '99.1332° W' },
+	/** Una línea para pies de sección / chips. */
+	pilotShort: 'piloto privado (verano 2021)',
 	/** Hero — editar solo aquí para no tocar JSX/estilos del componente. */
-	tagline: 'ITAM, Meefi y piloto privado.',
+	tagline: 'ITAM, Meefi, código y matemáticas.',
 	heroBeforeMeefi:
 		'Estudio matemáticas aplicadas y ciencia de datos en el ITAM y soy uno de los tres cofundadores de ',
-	heroAfterMeefi: '. Soy piloto privado.',
+	heroAfterMeefi: '.',
+} as const;
+
+export const contactSection = {
+	intro: 'Normalmente respondo en uno o dos días.',
 } as const;
 
 /** Sección Meefi — historia + rutas bajo /public/images/meefi/ */
 export const meefiSection = {
-	tagline: 'Cuenta empresarial, pagos masivos y facturación para PYMEs.',
+	tagline: 'Tesorería centralizada para las pymes en México.',
 	intro:
 		'Esa frase resume lo que hoy vendemos en producción. Abajo va el recorrido, con fotos del camino.',
 	story: [
@@ -62,7 +68,7 @@ export const meefiSection = {
 		{
 			id: 'pivot',
 			label: 'Venta y giro',
-			body: 'Esa operación la vendimos. Con el aprendizaje (y el mismo trío) pivotamos a lo que hoy es Meefi: tesorería para pymes que siguen repartiéndose entre Excel, el banco y el celular—con producto web, reglas claras y GPT donde ahorra trabajo repetitivo.',
+			body: 'Esa operación la vendimos. Hoy Meefi es tesorería centralizada para las pymes en México.',
 			images: [
 				{
 					src: '/images/meefi/story-office.png',
@@ -73,7 +79,7 @@ export const meefiSection = {
 		{
 			id: 'hoy',
 			label: 'Lo de ahora',
-			body: 'El producto ya vive en producción: inicio con balance y movimientos, facturas, cuentas por cobrar y conciliación. Abajo va el tablero real—lo que ven los clientes en app, no un mock de marketing.',
+			body: '',
 			images: [
 				{
 					src: '/images/meefi/story-dashboard-showcase.png',
@@ -84,7 +90,7 @@ export const meefiSection = {
 	],
 } as const;
 
-/** Bitácora — agregar entradas en src/lib/content.ts si hace falta. */
+/** Bitácora — nuevas entradas en este archivo. */
 export const flightLog = [
 	{
 		id: 'meefi',
@@ -92,7 +98,7 @@ export const flightLog = [
 		place: 'Meefi',
 		dates: '2023 — hoy',
 		description:
-			'Facturación por WhatsApp primero (20k+ personas, 500+ clientes); en esa etapa entramos a Platanus. Vendimos, pivotamos y hoy somos tesorería para pymes con Alan y Gerardo—yo más del lado técnico.',
+			'Facturación por WhatsApp primero (20k+ personas, 500+ clientes); en esa etapa entramos a Platanus. Vendimos, pivotamos y hoy Meefi es tesorería centralizada para pymes en México—yo más del lado técnico con Alan y Gerardo.',
 	},
 	{
 		id: 'itam',
@@ -105,10 +111,10 @@ export const flightLog = [
 	{
 		id: 'pilot',
 		role: 'Piloto privado',
-		place: 'Licencia a los 17',
-		dates: '—',
+		place: 'Licencia privada',
+		dates: 'Verano 2021',
 		description:
-			'Reglas, checklist, meterle cuando el panorama no es claro. La licencia la saqué a los 17; lo demás es disciplina y no apurarse.',
+			'Reglas, checklist, meterle cuando el panorama no es claro. La licencia salió ese verano; lo demás es disciplina y no apurarse.',
 	},
 	{
 		id: 'tech',
@@ -129,6 +135,11 @@ export const skills = {
 } as const;
 
 export type SkillGroup = keyof typeof skills;
+
+/** Sección Leyendo — títulos en `books`. */
+export const readingSection = {
+	intro: 'Los libros que más me gustan.',
+} as const;
 
 export const books = [
 	{

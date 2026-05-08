@@ -47,7 +47,7 @@ export function SectionAbout() {
 					</div>
 				</div>
 				<p className="mt-14 font-mono text-xs text-[var(--muted)]">
-					<span aria-hidden>📍</span> {site.location} · piloto privado · Meefi
+					<span aria-hidden>📍</span> {site.location} · {site.pilotShort} · Meefi
 				</p>
 			</div>
 		</section>

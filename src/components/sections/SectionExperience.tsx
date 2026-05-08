@@ -13,10 +13,7 @@ export function SectionExperience() {
 				<h2 className="font-display mt-4 max-w-2xl text-4xl font-semibold tracking-tight text-[var(--ink)] md:text-5xl">
 					Lugares y fechas.
 				</h2>
-				<p className="mt-6 max-w-xl text-[var(--muted)]">
-					Fechas y lugares. Si quieres más entradas, se editan en{' '}
-					<code className="font-mono text-sm text-[var(--ink)]">src/lib/content.ts</code>.
-				</p>
+				<p className="mt-6 max-w-xl text-[var(--muted)]">Fechas y lugares, en orden.</p>
 				<ol className="relative mt-16 max-w-3xl border-l border-dashed border-[var(--cockpit)]/40 pl-8 md:pl-10">
 					{flightLog.map((leg) => (
 						<li key={leg.id} className="relative pb-12 last:pb-0">
