@@ -44,16 +44,16 @@ export function SiteNav() {
 
 	return (
 		<header className="fixed left-0 right-0 top-0 z-50 border-b border-[var(--line)] bg-[var(--canvas)]/90 backdrop-blur-md">
-			<div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 md:px-6">
+			<div className="mx-auto grid max-w-6xl grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-x-3 gap-y-2 px-4 py-3.5 sm:gap-x-4 md:px-6 md:py-4">
 				<button
 					type="button"
 					onClick={() => scrollTo('hero')}
-					className="font-display text-sm font-semibold tracking-tight text-[var(--ink)] md:text-base"
+					className="shrink-0 justify-self-start font-display text-sm font-semibold tracking-tight text-[var(--ink)] md:text-base"
 				>
 					ESM
 				</button>
 				<nav
-					className="scrollbar-none flex max-w-[min(72vw,520px)] gap-1 overflow-x-auto md:max-w-none md:flex-wrap md:justify-center"
+					className="scrollbar-none flex min-w-0 justify-center gap-1.5 overflow-x-auto sm:gap-2 md:flex-wrap md:justify-center md:overflow-visible"
 					aria-label="Sections"
 				>
 					{links.map(({ id, label }) => (
@@ -61,7 +61,7 @@ export function SiteNav() {
 							key={id}
 							type="button"
 							onClick={() => scrollTo(id)}
-							className={`shrink-0 rounded-full px-2.5 py-1 font-mono text-[10px] font-medium uppercase tracking-wider transition md:px-3 md:text-[11px] ${
+							className={`shrink-0 rounded-full px-2.5 py-1.5 font-mono text-[10px] font-medium uppercase tracking-wider transition sm:px-3 md:text-[11px] ${
 								active === id
 									? 'bg-[var(--cockpit)] text-[var(--canvas)]'
 									: 'text-[var(--muted)] hover:text-[var(--ink)]'
@@ -73,7 +73,7 @@ export function SiteNav() {
 				</nav>
 				<button
 					type="button"
-					className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[var(--line)] text-[var(--ink)]"
+					className="flex h-9 w-9 shrink-0 justify-self-end items-center justify-center rounded-full border border-[var(--line)] text-[var(--ink)] md:h-10 md:w-10"
 					onClick={() =>
 						setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')
 					}

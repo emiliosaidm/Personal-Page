@@ -1,13 +1,9 @@
 'use client';
 
-import Image from 'next/image';
 import { ChevronDown } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { WordRevealWords } from '@/components/ui/WordReveal';
 import { site } from '@/lib/content';
-import { publicAsset } from '@/lib/public-url';
-
-const PORTADA = publicAsset('/images/portada.png');
 
 export function SectionHero() {
 	return (
@@ -16,8 +12,8 @@ export function SectionHero() {
 			className="relative min-h-[100dvh] scroll-mt-20 border-b border-[var(--line)] px-4 pb-24 pt-28 md:px-6 md:pb-32 md:pt-32"
 		>
 			<div className="pointer-events-none absolute inset-0 grid-technical" aria-hidden />
-			<div className="relative mx-auto grid max-w-6xl gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-end lg:gap-16">
-				<div>
+			<div className="relative mx-auto max-w-6xl">
+				<div className="max-w-2xl">
 					<p className="font-mono text-[10px] font-medium uppercase tracking-[0.35em] text-[var(--cockpit)] dark:text-[var(--cockpit)]">
 						{site.location} {site.countryFlag} · {site.age} años
 					</p>
@@ -58,20 +54,6 @@ export function SectionHero() {
 							meefi.io
 						</a>
 					</motion.div>
-				</div>
-				<div className="relative mx-auto w-full max-w-md lg:mx-0 lg:max-w-none lg:translate-y-4">
-					<figure className="relative overflow-hidden rounded-sm border border-[var(--line)] bg-[var(--elevated)]">
-						<div className="relative aspect-[3/4] w-full md:aspect-[4/5]">
-							<Image
-								src={PORTADA}
-								alt="Emilio en el escritorio, con el monitor y código al fondo."
-								fill
-								className="object-cover object-[50%_22%]"
-								sizes="(max-width: 1024px) 100vw, 40vw"
-								priority
-							/>
-						</div>
-					</figure>
 				</div>
 			</div>
 			<a
