@@ -79,7 +79,7 @@ export const meefiSection = {
 		{
 			id: 'hoy',
 			label: 'Lo de ahora',
-			body: '',
+			body: '' as string,
 			images: [
 				{
 					src: '/images/meefi/story-dashboard-showcase.png',
